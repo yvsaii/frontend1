@@ -1,32 +1,64 @@
-import './Header.css';
-import Mainlogo from '../Assets/mainLogo.png';
-// import { useRef } from 'react';
+import React, { useState } from "react";
+import "./Header.css";
+import { useNavigate } from "react-router-dom";
 
 export default function Header() {
-    
-    return (
-        <header className='header'>
-            <div className="header1">
-                <div className='sub-header1'>
-                    <p>Why Green Kart</p>
-                    <p>Download App</p>
-                    <div className="icons">
-                        <i className="fa-brands fa-apple"></i>
-                        <i className="fa-brands fa-google-play"></i>
-                    </div>
-                </div>
-                <div className="sub-header2">
-                    <p>About Us</p>
-                    <p>GreenKartContact@gmail.com</p>
-                    <p>Contact Us</p>
-                </div>
-            </div>
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const navigate = useNavigate();
 
-            <div className="header2">
-                <div className="left">
-                    <img src={Mainlogo} alt="Logo" className='mainLogo' />
-                </div>
-            </div>
-        </header>
-    )
+  return (
+    <header className="header">
+
+      {/* TOP GREEN HEADER */}
+      <div className="header1">
+
+        <div className="sub-header1">
+          <p onClick={() => navigate("/home")}>Why Green Kart</p>
+          <p onClick={() => alert("Future Development!")}>Download App</p>
+
+          <div className="icons">
+            <i className="fa-brands fa-apple"></i>
+            <i className="fa-brands fa-google-play"></i>
+          </div>
+        </div>
+
+        <div className="sub-header2">
+          <p onClick={() => navigate("/aboutus")}>About Us</p>
+          <p>GreenKartContact@gmail.com</p>
+          <p onClick={() => navigate("/aboutus")}>Contact Us</p>
+        </div>
+
+      </div>
+
+      {/* MOBILE MENU TOGGLE */}
+      <button
+        className="menu-toggle"
+        onClick={() => setIsMenuOpen(!isMenuOpen)}
+      >
+        <i className={isMenuOpen ? "fas fa-times" : "fas fa-bars"}></i>
+      </button>
+
+      {/* MOBILE DRAWER MENU */}
+      {isMenuOpen && (
+        <div className="mobile-menu-drawer open">
+          <p onClick={() => navigate("/home")}>Why Green Kart</p>
+          <p onClick={() => alert("Future Development!")}>Download App</p>
+          <p onClick={() => navigate("/aboutus")}>About Us</p>
+          <p>GreenKartContact@gmail.com</p>
+          <p onClick={() => navigate("/contact")}>Contact Us</p>
+
+          {/* Corrected paths */}
+          <p onClick={() => navigate("/allusers")}>All Users</p>
+          <p onClick={() => navigate("/topscore")}>Top Score</p>
+          <p onClick={() => navigate("/")}>Login</p>
+          <p onClick={() => navigate("/register")}>Register</p>
+
+          <div className="icons-mobile">
+            <i className="fa-brands fa-apple"></i>
+            <i className="fa-brands fa-google-play"></i>
+          </div>
+        </div>
+      )}
+    </header>
+  );
 }

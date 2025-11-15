@@ -1,0 +1,257 @@
+/* Home.css */
+
+/* General body styling for full height and no default margin */
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    /* This makes sure the 100vh calculations are accurate */
+    height: 100%; 
+    overflow-x: hidden; /* Prevent horizontal scroll */
+}
+
+/* Ensure the main app div doesn't add extra space */
+#root, .App { /* Assuming your root element is #root or has class .App */
+    height: 100%;
+}
+
+
+/* --- BANNER SECTION STYLES --- */
+.banner {
+    position: relative; /* Crucial for positioning overlay and text */
+    width: 100%;
+    /* Calculate remaining height: 100% of viewport height minus header height */
+    /* Assuming Header has a height (e.g., 60px) */
+    min-height: calc(100vh - var(--header-height, 60px)); 
+    display: flex; /* For centering content */
+    align-items: center; /* Center content vertically */
+    justify-content: center; /* Center content horizontally */
+    overflow: hidden; /* Ensures image doesn't overflow */
+}
+
+.banner-image {
+    width: 100%;
+    height: 100%; /* Fill the banner div */
+    object-fit: cover; /* Cover the area, cropping if necessary */
+    position: absolute; /* Allows overlay to sit on top */
+    top: 0;
+    left: 0;
+    z-index: 1; /* Place image below overlay */
+}
+
+.banner-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Black dim color using linear gradient */
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)); 
+    z-index: 2; /* Place overlay above image */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white; /* Text color */
+}
+
+.banner-content {
+    z-index: 3; /* Place content above overlay */
+    max-width: 800px; /* Limit text width for readability */
+    padding: 20px;
+}
+
+.banner-content h1 {
+    font-size: 3em; /* Large heading */
+    margin-bottom: 20px;
+    line-height: 1.2;
+}
+
+.banner-content p {
+    font-size: 1.5em; /* Sub-text */
+    margin-bottom: 30px;
+}
+
+.highlight-green {
+    color: rgba(132, 179, 73); /* Your green highlight color */
+}
+
+.banner-buttons {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.solution-button {
+    padding: 12px 30px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.solution-button.business {
+    background-color: rgba(132, 179, 73); /* Green button for business */
+    color: white;
+}
+
+.solution-button.business:hover {
+    background-color: #a6d86b; /* Lighter green on hover */
+}
+
+.solution-button.personal {
+    background-color: transparent;
+    color: white;
+    border: 2px solid white; /* White border for personal */
+}
+
+.solution-button.personal:hover {
+    background-color: rgba(255, 255, 255, 0.2); /* Slight white background on hover */
+    border-color: #f0f0f0;
+}
+
+
+/* --- SUBSCRIPTION SECTION (existing, adjust as needed) --- */
+.sub {
+    padding: 60px 20px;
+    text-align: center;
+    background-color: #f8f8f8; /* Light background for separation */
+}
+
+.sub h1 {
+    font-size: 2.5em;
+    margin-bottom: 40px;
+}
+
+.subdivs {
+    display: flex;
+    flex-wrap: wrap; /* Allows cards to wrap on smaller screens */
+    justify-content: center;
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.subdivs .div {
+    flex: 1 1 calc(25% - 40px); /* Roughly 4 items per row, adjusts */
+    min-width: 250px; /* Minimum width before wrapping */
+    background-color: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    text-align: left;
+}
+
+.subdivs .div h1 {
+    font-size: 1.4em;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.subdivs .div p {
+    font-size: 1em;
+    color: #666;
+    line-height: 1.6;
+}
+
+/* --- INSTRUCTION SECTION (existing, adjust as needed) --- */
+.instruction-section {
+    padding: 60px 20px;
+    text-align: center;
+    background-color: #fff;
+}
+
+.instruction-section h2 {
+    font-size: 2.2em;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.instruction-section p {
+    font-size: 1.1em;
+    color: #555;
+    margin-bottom: 40px;
+}
+
+.video-container {
+    position: relative;
+    width: 80%; /* Adjust width as needed */
+    max-width: 900px; /* Max width for the video */
+    margin: 0 auto;
+    padding-bottom: 45%; /* 16:9 aspect ratio (height is 56.25% of width for 16:9, so 45% for a bit less) */
+    height: 0;
+    overflow: hidden;
+    background-color: #000;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+/* --- Responsive Adjustments for Banner --- */
+@media (max-width: 768px) {
+    .banner {
+        /* On smaller screens, allow banner to be taller if content needs it */
+        min-height: 70vh; /* Adjust as per preference, or make it auto */
+    }
+
+    .banner-content h1 {
+        font-size: 2em; /* Smaller heading on mobile */
+    }
+
+    .banner-content p {
+        font-size: 1.1em; /* Smaller text on mobile */
+    }
+
+    .banner-buttons {
+        flex-direction: column; /* Stack buttons vertically */
+        gap: 10px;
+    }
+
+    .solution-button {
+        width: 80%; /* Buttons take up more width */
+        margin: 0 auto; /* Center buttons */
+    }
+
+    .subdivs .div {
+        flex: 1 1 calc(50% - 30px); /* 2 items per row on tablets */
+    }
+
+    .video-container {
+        width: 95%; /* Wider video on smaller screens */
+        padding-bottom: 60%; /* Adjust aspect ratio for better fit */
+    }
+}
+
+@media (max-width: 480px) {
+    .banner {
+        min-height: 60vh;
+    }
+
+    .banner-content h1 {
+        font-size: 1.5em;
+    }
+
+    .banner-content p {
+        font-size: 1em;
+    }
+
+    .subdivs .div {
+        flex: 1 1 100%; /* 1 item per row on mobile */
+    }
+}
+
+/* Define header height as a CSS variable if your Header component has a consistent height */
+/* You would set this in your App.css or index.css for global access */
+:root {
+  --header-height: 60px; /* Adjust this to the actual height of your Header component */
+}
