@@ -16,10 +16,7 @@ export default function Header() {
           <p onClick={() => navigate("/home")}>Why Green Kart</p>
           <p onClick={() => alert("Future Development!")}>Download App</p>
 
-          <div className="icons">
-            <i className="fa-brands fa-apple"></i>
-            <i className="fa-brands fa-google-play"></i>
-          </div>
+         
         </div>
 
         <div className="sub-header2">
@@ -45,7 +42,7 @@ export default function Header() {
           <p onClick={() => alert("Future Development!")}>Download App</p>
           <p onClick={() => navigate("/aboutus")}>About Us</p>
           <p>GreenKartContact@gmail.com</p>
-          <p onClick={() => navigate("/contact")}>Contact Us</p>
+          <p onClick={() => navigate("/aboutus")}>Contact Us</p>
 
           {/* Corrected paths */}
           <p onClick={() => navigate("/allusers")}>All Users</p>
