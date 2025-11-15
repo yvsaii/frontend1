@@ -1,0 +1,128 @@
+@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Quicksand:wght@300..700&family=Raleway:ital,wght@0,100..900;1,100..900&family=Smooch+Sans:wght@100..900&family=Stack+Sans+Text:wght@200..700&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+.aboutus {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    margin: 3rem 5rem;
+    background-color: var(--header2-color);
+    overscroll-behavior: contain;
+    overflow-x: hidden;
+     font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+}
+
+.reviews {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 3rem;
+    justify-content: center;
+    width: 100%;
+    background-color: var(--header2-color);
+}
+
+.review {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start; 
+    gap: 5rem;
+    padding: 3rem 5rem;
+    border-bottom: 2px solid hsl(0, 0%, 90%);
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.review img {
+    max-width: 400px;
+    width: 100%;
+    height: auto;
+    box-shadow: 4px 10px 10px rgba(0, 0, 0, 0.1);
+    flex-shrink: 0;
+}
+
+.part2 {
+    max-width: 500px;
+}
+
+.part2 h2 {
+    margin-bottom: 1rem;
+    font-size: 2rem;
+}
+
+.part2 p {
+    line-height: 1.5rem;
+    text-align: justify;
+}
+
+
+@media (max-width: 1249px) {
+    .review {
+        gap: 3rem;
+        padding: 2.5rem 4rem;
+    }
+
+    .part2 h2 {
+        font-size: 1.8rem;
+    }
+
+    .part2 p {
+        line-height: 1.6rem;
+    }
+}
+
+@media (max-width: 900px) {
+    .review {
+        flex-direction: column; 
+        align-items: center;
+        padding: 2rem 2rem;
+        gap: 2rem;
+    }
+
+    .review img {
+        max-width: 300px;
+    }
+
+    .part2 {
+        max-width: 90%;
+        text-align: center;
+    }
+
+    .part2 h2 {
+        font-size: 1.6rem;
+    }
+
+    .part2 p {
+        line-height: 1.5rem;
+        font-size: 0.95rem;
+    }
+}
+
+@media (max-width: 500px) {
+    .aboutus {
+        margin: 2rem 1rem;
+    }
+
+    .review {
+        padding: 1.5rem 1rem;
+        gap: 1.5rem;
+    }
+
+    .review img {
+        max-width: 100%;
+    }
+
+    .part2 {
+        max-width: 100%;
+    }
+
+    .part2 h2 {
+        font-size: 1.4rem;
+    }
+
+    .part2 p {
+        line-height: 1.4rem;
+        font-size: 0.9rem;
+    }
+}

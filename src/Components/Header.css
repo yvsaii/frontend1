@@ -1,0 +1,146 @@
+:root {
+  --green: rgba(26, 129, 57);
+  --black: rgba(38, 39, 38);
+  --header-color: rgba(247, 247, 247);
+  --header2-color: rgba(255, 255, 255);
+  --secondary-text: rgb(101, 101, 101);
+}
+
+/* Global reset */
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+}
+
+body {
+  overflow-x: hidden; 
+}
+
+/* Header container */
+.header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    width: 100%;
+}
+
+/* Top Header */
+.header1 {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.5rem 2rem;
+    background-color: rgba(132, 179, 73);
+    color: white;
+}
+
+.sub-header1, .sub-header2 {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.sub-header1 p, .sub-header2 p {
+    text-decoration: none;
+    padding: 0rem 1rem;
+    border-right: 2px solid white;
+    cursor: pointer;
+}
+
+.sub-header1 p:last-child, .sub-header2 p:last-child {
+    border-right: none;
+}
+
+/* Social icons */
+.icons {
+    display: flex;
+    gap: 1rem;
+    font-size: 2rem;
+}
+
+/* Bottom Header */
+.header2 {
+    background-color: var(--header2-color);
+    border-bottom-left-radius: 25px;
+    border-bottom-right-radius: 25px;
+    box-shadow: 0px 10px 10px rgba(0,0,0,0.1);
+    display: flex;
+    align-items: center;
+    padding: 1rem 2rem;
+    overflow: visible;
+}
+
+.left {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 1rem;
+    width: 100%;
+}
+
+/* Search input */
+.input {
+    display: flex;
+    align-items: center;
+    border: 1px solid var(--secondary-text);
+    padding: 10px 15px;
+    border-radius: 20px;
+    gap: 1rem;
+    flex: 1; 
+}
+
+.left input {
+    width: 100%;
+    border: none;
+}
+
+.left input:focus {
+    outline: none;
+}
+
+/* Logo */
+.mainLogo {
+    width: 100px;
+    height: auto; /* maintain aspect ratio */
+    max-width: 100%;
+}
+
+/* Media Queries */
+
+/* Medium screens */
+@media (max-width: 1249px){
+    .header1 {
+        padding: 1rem 1rem;
+    }
+    .sub-header1 p, .sub-header2 p {
+        padding: 0rem 0.5rem;
+        font-size: 0.8rem;
+    }
+    .mainLogo {
+        width: 80px;
+    }
+}
+
+/* Tablets / smaller screens */
+@media (max-width: 900px){
+    .header1 {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    .mainLogo {
+        width: 60px;
+    }
+}
+
+/* Mobile */
+@media (max-width: 450px){
+    .header1 {
+        display: none; /* hide top header on very small screens */
+    }
+    .mainLogo {
+        width: 50px;
+    }
+}

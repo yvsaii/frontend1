@@ -1,0 +1,66 @@
+/**
+ * Scripts loading on the frontend.
+ *
+ * @package \GreenScore App
+ * @author Suresh Shinde
+ */
+var gsa_frontend_scripts = ( function( $ ) {
+
+	'use strict';
+
+	// SEO Yoast FAQ toggle.
+	var yoast_faq = function() {
+		var gsa_accordion = function(el, multiple) {
+			this.el = el || {};
+			this.multiple = multiple || false;
+
+			var links = this.el.find('.schema-faq-question');
+			links.on('click', {
+					el: this.el,
+					multiple: this.multiple
+			}, this.dropdown)
+		}
+
+		gsa_accordion.prototype.dropdown = function(e) {
+				var $el = e.data.el,
+				$this = $(this),
+				$next = $(this).next();
+
+				$next.slideToggle();
+				$this.parent().toggleClass('open');
+
+				if (!e.data.multiple) {
+						$el.find('.schema-faq-answer').not($next).slideUp().parent().removeClass('open');
+				};
+		}
+
+		var accordion = new gsa_accordion($('.wp-block-yoast-faq-block'), false);
+		
+		// $(document).ready(function () {
+        // $('body').bind('cut copy', function (e) {
+        // 	e.preventDefault();
+        // 	});
+        // $("body").on("contextmenu",function(e){
+        //        return false;
+        // 	});
+        // });
+	},
+
+	/**
+	 * Bind behavior to events.
+	 */
+	ready = function() {
+
+	// Run on document ready. required to work on Yoast function
+	yoast_faq();
+
+	};
+
+	// Only expose the ready function to the world.
+	return {
+		ready: ready
+	};
+	
+})( jQuery );
+
+jQuery( gsa_frontend_scripts.ready );
