@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
 // Components
 // import Header from "./Components/Header";
@@ -19,6 +19,7 @@ export default function App() {
       {/* Header will be common across all pages */}
 
       <Routes>
+        <Route path="/" element={<Navigate to="/login" replace />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/allusers" element={<AllUsers />} />
@@ -29,7 +30,7 @@ export default function App() {
       </Routes>
 
       {/* Footer will be common across all pages */}
-      
+
     </BrowserRouter>
   );
 }

@@ -44,7 +44,7 @@ export default function Footer() {
             <i className="fa-brands fa-linkedin-in"></i> */}
           </div>
 
-          <p>&copy; 2025, GreenKart | Privacy Policy | Sitemap | Terms & Conditions</p>
+          <p>&copy; 2025, GreenScore | Privacy Policy | Sitemap | Terms & Conditions</p>
         </div>
       </div>
     </footer>

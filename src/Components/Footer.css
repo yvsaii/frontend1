@@ -3,7 +3,7 @@
     flex-direction: row;
     width: 100%;
     background-color: rgba(132, 179, 73);
-    padding: 2rem 10rem 0rem 10rem;
+    padding: 2rem 10rem 2rem 10rem;
     bottom: 0%;
     height: 70vh;
     position: relative;
@@ -60,7 +60,7 @@
     right: 0;
     width: 600px;
     height: 400px;
-} */
+} 
 
 @media (max-width: 1249px) {
     .footer1 {
@@ -109,7 +109,7 @@
         margin-bottom: -40vh;
     }
 }
-/
+
 @media (max-width: 1249px) and (min-width: 901px) {
     .footer1 {
         padding: 2rem 2rem 2rem 2rem; 
@@ -149,7 +149,7 @@
 @media (max-width: 601px) {
 
     .footer1 {
-        padding: 1rem 1.5rem 0 1.5rem;
+        padding: 1rem 1.5rem 1rem 1.5rem;
         height: auto;
     }
     i{
@@ -183,5 +183,11 @@
     }
     
    
+}
+@media (max-width: 375px){
+    .bottom p{
+        font-size: 0.6rem;
+        margin-top: 1rem;
+    }
 }
 

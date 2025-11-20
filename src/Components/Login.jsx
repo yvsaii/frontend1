@@ -12,6 +12,10 @@ export default function Login() {
 
   const handleLogin = async (e) => {
     e.preventDefault();
+    if(email === "" || password === ""){
+      setMessage("Fields are empty!");
+      return;
+    }
 
     try {
       const response = await fetch("http://localhost:8080/GreenScore/login", {

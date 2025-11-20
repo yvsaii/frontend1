@@ -118,7 +118,7 @@ export default function Register() {
 
         {/* RIGHT SIDE */}
         <div className="formimage">
-          <h1>Welcome, Future Hero!</h1>
+          <h1 style={{textAlign:"center",}}>Welcome, Future Hero!</h1>
           <p>Enter your details and start your journey with us!</p>
           <button
             className="signin-prompt-button"
