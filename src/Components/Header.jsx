@@ -1,61 +1,54 @@
-import React, { useState } from "react";
-import "./Header.css";
+import React, { useState, useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import "./Header.css";
+import { FaBars, FaTimes } from "react-icons/fa";
 
 export default function Header() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const navigate = useNavigate();
+  const [menuOpen, setMenuOpen] = useState(false);
+  const navRef = useRef(null);
+
+  const toggleMenu = () => setMenuOpen(!menuOpen);
+
+  const handleNavigate = (path) => {
+    setMenuOpen(false); // close menu after clicking
+    navigate(path);
+  };
+
+  // Optional: close menu when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (navRef.current && !navRef.current.contains(event.target)) {
+        setMenuOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
 
   return (
     <header className="header">
+      <div className="header-main">
+        <div className="logo" onClick={() => handleNavigate("/home")}>
+          GreenKart
+        </div>
 
-      {/* TOP GREEN HEADER */}
-      <div className="header1">
+        <div className="menu-icon" onClick={toggleMenu}>
+          {menuOpen ? <FaTimes /> : <FaBars />}
+        </div>
 
-        <div className="sub-header1">
-          <p onClick={() => navigate("/home")}>Why Green Kart</p>
+        <nav
+          ref={navRef}
+          className={`nav-items ${menuOpen ? "open" : ""}`}
+          style={{ maxHeight: menuOpen ? navRef.current?.scrollHeight : 0 }}
+        >
+          <p onClick={() => handleNavigate("/home")}>Why Green Kart</p>
           <p onClick={() => alert("Future Development!")}>Download App</p>
-
-         
-        </div>
-
-        <div className="sub-header2">
-          <p onClick={() => navigate("/aboutus")}>About Us</p>
+          <p onClick={() => handleNavigate("/aboutus")}>About Us</p>
+          <p onClick={() => handleNavigate("/contact")}>Contact Us</p>
           <p>GreenKartContact@gmail.com</p>
-          <p onClick={() => navigate("/aboutus")}>Contact Us</p>
-        </div>
-
+        </nav>
       </div>
-
-      {/* MOBILE MENU TOGGLE */}
-      <button
-        className="menu-toggle"
-        onClick={() => setIsMenuOpen(!isMenuOpen)}
-      >
-        <i className={isMenuOpen ? "fas fa-times" : "fas fa-bars"}></i>
-      </button>
-
-      {/* MOBILE DRAWER MENU */}
-      {isMenuOpen && (
-        <div className="mobile-menu-drawer open">
-          <p onClick={() => navigate("/home")}>Why Green Kart</p>
-          <p onClick={() => alert("Future Development!")}>Download App</p>
-          <p onClick={() => navigate("/aboutus")}>About Us</p>
-          <p>GreenKartContact@gmail.com</p>
-          <p onClick={() => navigate("/aboutus")}>Contact Us</p>
-
-          {/* Corrected paths */}
-          <p onClick={() => navigate("/allusers")}>All Users</p>
-          <p onClick={() => navigate("/topscore")}>Top Score</p>
-          <p onClick={() => navigate("/")}>Login</p>
-          <p onClick={() => navigate("/register")}>Register</p>
-
-          <div className="icons-mobile">
-            <i className="fa-brands fa-apple"></i>
-            <i className="fa-brands fa-google-play"></i>
-          </div>
-        </div>
-      )}
     </header>
   );
 }
